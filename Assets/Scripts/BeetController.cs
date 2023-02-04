@@ -26,8 +26,8 @@ public class BeetController : MonoBehaviour
     public void StartDragging()
     {
         //rControl.TryGetFeatureValue(CommonUsages.)
-        GetComponent<BasicGrabbable>().grabbedEvent.currentInputModule.
         GetComponent<Rigidbody>().isKinematic = false;
+        //GetComponent<BasicGrabbable>().grabbedEvent.currentInputModule.
     }
 
 }
