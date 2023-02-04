@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7179968145926663301}
   - component: {fileID: 7179968145926663303}
   m_Layer: 0
-  m_Name: DiceTable
+  m_Name: BurnBaby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99860c7fc2ca4a1ab90a1b9d2e194b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  receivingRenderer: {fileID: 0}
   effectFire: {fileID: 7178806512605145684}
 --- !u!1001 &7179968144889707828
 PrefabInstance:
@@ -70,7 +69,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1232004554315616, guid: 1524b724e50071f47a7d0b92a6948368, type: 3}
       propertyPath: m_Name
-      value: TFF_Fire_01A
+      value: BurnFlame
       objectReference: {fileID: 0}
     - target: {fileID: 1232004554315616, guid: 1524b724e50071f47a7d0b92a6948368, type: 3}
       propertyPath: m_IsActive
