@@ -142,6 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbdc9aeada48d33dbe1392a086a204f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fuelValue: 10
+  healthValue: 7
+  price: 20
+  spawnFactor: 20
+  cec: {fileID: 0}
 --- !u!1001 &7159076617721155053
 PrefabInstance:
   m_ObjectHideFlags: 0

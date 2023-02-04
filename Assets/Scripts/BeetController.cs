@@ -1,9 +1,19 @@
+using System.Collections.Generic;
 using HTC.UnityPlugin.Vive;
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR;
 
 public class BeetController : MonoBehaviour
 {
+    public float fuelValue;
+    public float healthValue;
+    public float price;
+    public float spawnFactor;
+    public AudioSource digging;
+    public List<AudioClip> gardenSounds;
+
+    public ViveColliderEventCaster cec;
     
     private InputDevice rControl;
     private InputDevice lControl;
@@ -25,9 +35,10 @@ public class BeetController : MonoBehaviour
     
     public void StartDragging()
     {
-        //GetComponent<BasicGrabbable>().grabbedEvent.currentInputModule.input
+        cec = GetComponent<BasicGrabbable>().currentGrabber.eventData.eventCaster as ViveColliderEventCaster;
+        if (cec) HapticPulseUnity(cec.viveRole.IsRole(HandRole.RightHand));
         GetComponent<Rigidbody>().isKinematic = false;
-        HapticPulseUnity(true);
+        
         //
     }
 

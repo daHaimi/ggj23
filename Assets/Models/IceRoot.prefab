@@ -114,6 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbdc9aeada48d33dbe1392a086a204f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fuelValue: -5
+  healthValue: -5
+  price: 50
+  spawnFactor: 10
+  cec: {fileID: 0}
 --- !u!136 &1154021699424498797
 CapsuleCollider:
   m_ObjectHideFlags: 0
