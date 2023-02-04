@@ -27,6 +27,7 @@ public class BeetController : MonoBehaviour
     {
         //rControl.TryGetFeatureValue(CommonUsages.)
         GetComponent<Rigidbody>().isKinematic = false;
+        HapticPulseUnity(true);
         //GetComponent<BasicGrabbable>().grabbedEvent.currentInputModule.
     }
 
