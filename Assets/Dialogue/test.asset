@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3345eca2ae705524098108bdd40d5f8f, type: 3}
   m_Name: test
   m_EditorClassIdentifier: 
-  dialogue: []
+  dialogue:
+  - I am the root.
+  - What is it that you seek, little sprout?
