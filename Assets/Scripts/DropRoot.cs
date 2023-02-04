@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using HTC.UnityPlugin.Vive;
 using UnityEngine;
 
 public class DropRoot : MonoBehaviour
@@ -19,6 +20,7 @@ public class DropRoot : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Root")) return;
+        collision.gameObject.GetComponent<BasicGrabbable>().ForceRelease();
         Destroy(collision.gameObject);
         effectFire.SetActive(true);
         rendererMat.color = Random.ColorHSV();
