@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootDensity: 0
-  obstacleDensity: 10
+  obstacleDensity: 15
   roots: []
   possObstacles:
   - {fileID: 2935361225058495807, guid: a16e529afb268144a8534d7dca76f2c0, type: 3}
@@ -350,6 +350,12 @@ MonoBehaviour:
   - {fileID: 8772648035309327700, guid: b49a636bdcf5235af8d27f096b61c588, type: 3}
   - {fileID: 2664790825941896147, guid: 901ec4e2b124a713c8ba538751937f78, type: 3}
   - {fileID: 259079346657408548, guid: f047d590b24f91ae8bfb323412316e32, type: 3}
+  - {fileID: 3076924198181149565, guid: c221f26aeede4324dbd7bf3f5cfb2c1e, type: 3}
+  - {fileID: 3097900720464682045, guid: b2469a3119b81d44c8aefcb395e9e073, type: 3}
+  - {fileID: 8951721864408248206, guid: 2a007355eea5d404dafcc683ea0dab5a, type: 3}
+  - {fileID: 6964017270385084035, guid: db9bf5007821ebd45bd5723b3377c267, type: 3}
+  - {fileID: 3986007849690009879, guid: eabe454b1f3005c4388164a2cd26c714, type: 3}
+  - {fileID: 856343615273139667, guid: 6cca87717650dbd4c8dfab7cad9dbca3, type: 3}
   rootsContainer: {fileID: 6148153517594841272}
   obstaclesContainer: {fileID: 6148153518182843969}
 --- !u!1 &6148153517769087420
@@ -498,7 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootDensity: 0
-  obstacleDensity: 10
+  obstacleDensity: 15
   roots: []
   possObstacles:
   - {fileID: 2935361225058495807, guid: a16e529afb268144a8534d7dca76f2c0, type: 3}
@@ -509,6 +515,12 @@ MonoBehaviour:
   - {fileID: 8772648035309327700, guid: b49a636bdcf5235af8d27f096b61c588, type: 3}
   - {fileID: 2664790825941896147, guid: 901ec4e2b124a713c8ba538751937f78, type: 3}
   - {fileID: 259079346657408548, guid: f047d590b24f91ae8bfb323412316e32, type: 3}
+  - {fileID: 3076924198181149565, guid: c221f26aeede4324dbd7bf3f5cfb2c1e, type: 3}
+  - {fileID: 3097900720464682045, guid: b2469a3119b81d44c8aefcb395e9e073, type: 3}
+  - {fileID: 8951721864408248206, guid: 2a007355eea5d404dafcc683ea0dab5a, type: 3}
+  - {fileID: 6964017270385084035, guid: db9bf5007821ebd45bd5723b3377c267, type: 3}
+  - {fileID: 3986007849690009879, guid: eabe454b1f3005c4388164a2cd26c714, type: 3}
+  - {fileID: 856343615273139667, guid: 6cca87717650dbd4c8dfab7cad9dbca3, type: 3}
   rootsContainer: {fileID: 6148153518126388571}
   obstaclesContainer: {fileID: 6148153518054749311}
 --- !u!1 &6148153518054749311
