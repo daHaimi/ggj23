@@ -25,10 +25,10 @@ public class BeetController : MonoBehaviour
     
     public void StartDragging()
     {
-        //rControl.TryGetFeatureValue(CommonUsages.)
+        //GetComponent<BasicGrabbable>().grabbedEvent.currentInputModule.input
         GetComponent<Rigidbody>().isKinematic = false;
         HapticPulseUnity(true);
-        //GetComponent<BasicGrabbable>().grabbedEvent.currentInputModule.
+        //
     }
 
 }

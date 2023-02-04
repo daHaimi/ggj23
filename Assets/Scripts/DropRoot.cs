@@ -4,18 +4,7 @@ using UnityEngine;
 
 public class DropRoot : MonoBehaviour
 {
-    public MeshRenderer receivingRenderer;
     public GameObject effectFire;
-
-    private Material rendererMat;
-    private Texture droppedTexture;
-
-    public void OnEnable()
-    {
-        if (receivingRenderer == null) return;
-        rendererMat = receivingRenderer.material;
-        receivingRenderer.sharedMaterial = rendererMat;
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -23,7 +12,6 @@ public class DropRoot : MonoBehaviour
         collision.gameObject.GetComponent<BasicGrabbable>().ForceRelease();
         Destroy(collision.gameObject);
         effectFire.SetActive(true);
-        rendererMat.color = Random.ColorHSV();
         StartCoroutine(HideFireCoroutine());
     }
 
