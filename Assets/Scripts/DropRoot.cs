@@ -8,15 +8,18 @@ public class DropRoot : MonoBehaviour
     public GameObject effectFire;
     public bool isSelling;
     public AudioSource actionSound;
+    public GameObject gameManager;
 
     private InputDevice rControl;
     private InputDevice lControl;
+    private GameManager gm;
     
     // Start is called before the first frame update
     void Start()
     {
         rControl = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
         lControl = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        gm = gameManager.GetComponent<GameManager>();
     }
     
     void HapticPulseUnity(bool right)
@@ -32,13 +35,21 @@ public class DropRoot : MonoBehaviour
         if (!collision.gameObject.CompareTag("Root")) return;
         
         var bg = collision.gameObject.GetComponent<BasicGrabbable>();
+        var bc = collision.gameObject.GetComponent<BeetController>();
         if (bg.isGrabbed)
         {
-            var bc = collision.gameObject.GetComponent<BeetController>();
             HapticPulseUnity(bc.cec.viveRole.IsRole(HandRole.RightHand));
             bg.ForceRelease();
         }
         actionSound.Play();
+        if (isSelling)
+        {
+            gm.AddMoney(bc.price);
+        }
+        else
+        {
+            gm.AddEnergy(bc.fuelValue);
+        }
 
         Destroy(collision.gameObject);
         effectFire.SetActive(true);

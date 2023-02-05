@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using HTC.UnityPlugin.Vive;
-using TMPro;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -38,8 +37,8 @@ public class BeetController : MonoBehaviour
         cec = GetComponent<BasicGrabbable>().currentGrabber.eventData.eventCaster as ViveColliderEventCaster;
         if (cec) HapticPulseUnity(cec.viveRole.IsRole(HandRole.RightHand));
         GetComponent<Rigidbody>().isKinematic = false;
-        
-        //
+        digging.clip = gardenSounds[Random.Range(0, gardenSounds.Count)];
+        digging.Play();
     }
 
 }
