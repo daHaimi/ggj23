@@ -1,12 +1,13 @@
 ﻿## values of roots (or the roots behind the roots)
 
-| root      | fuel value (max 100) | health value (max 100) | price (points) | spawn factor  |
-|-----------|----------------------|------------------------|----------------|---------------|
-| caroot    | 5                    | 5                      | 10             | 45%           |
-| redroot   | 10                   | 7                      | 20             | 20%           |
-| greenroot | 5                    | 10                     | 20             | 15%           |
-| iceroot   | -5                   | -5                     | 50             | 10%           |
-| rootato   | 10                   | 15                     | 30             | 10%           |
+| root      | fuel value (max 100) | health value (max 100) | price (points) | spawn factor |
+|-----------|----------------------|------------------------|----------------|--------------|
+| caroot    | 5                    | 5                      | 10             | 45%          |
+| redroot   | 10                   | 7                      | 20             | 20%          |
+| greenroot | 5                    | 10                     | 20             | 15%          |
+| iceroot   | -5                   | -5                     | 50             | 10%          |
+| rootato   | 10                   | 15                     | 30             | 10%          |
+| rotroot   | 1                    | -40                    | 2              | 5%           |
 
 We start with removing 1 point of health and fuel per second.\
 There is a difficulty factor (starting at 1) it might increase over time or by some other mechanic.
