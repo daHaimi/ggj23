@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float energy = 100;
     public float difficulty = 1;
     public Transform trainSound;
+    public Transform fadeOut;
 
     private Queue<Transform> floors = new();
     private float delta = 0;
@@ -81,7 +83,7 @@ public class GameManager : MonoBehaviour
     {
         energy += amt;
         var scale = fireUI.localScale;
-        scale.y = 50 / energy;
+        scale.y = energy / 200;
         fireUI.localScale = scale;
         switch (energy)
         {
@@ -106,7 +108,15 @@ public class GameManager : MonoBehaviour
 
     void Lose()
     {
-        // Todo: Implement
+        var anim = fadeOut.GetComponent<Animator>();
+        anim.Play("FadeOut");
+        StartCoroutine(GoToLoseScene());
+    }
+
+    IEnumerator GoToLoseScene()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Evil");
     }
     
     // Update is called once per frame

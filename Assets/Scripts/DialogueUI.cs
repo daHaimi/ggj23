@@ -1,7 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.XR;
 
 public class DialogueUI : MonoBehaviour
 {
@@ -10,8 +12,14 @@ public class DialogueUI : MonoBehaviour
     
     private TypewriterEffect _typewriterEffect;
 
+    private InputDevice rControl;
+    private InputDevice lControl;
+    
+    // Start is called before the first frame update
     void Start()
     {
+        rControl = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        lControl = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
         _typewriterEffect = GetComponent<TypewriterEffect>();
         ShowDialogue(testDialogue);
     }
@@ -26,11 +34,14 @@ public class DialogueUI : MonoBehaviour
         foreach (string dialogue in dialogueObject.Dialogue)
         {
             yield return _typewriterEffect.Run(dialogue, textLabel);
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+            yield return new WaitUntil(() =>
+            {
+                return Input.GetKeyDown(KeyCode.Space);
+            });
         }
-        
-        // dirty - start game here
-        
+
+        SceneManager.LoadScene("LeScene");
+
     }
     
     

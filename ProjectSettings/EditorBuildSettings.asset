@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LeScene.unity
     guid: 5234c58abcdb133b4a02054183b312cf
-  - enabled: 0
-    path: Assets/HTC.UnityPlugin/ViveInputUtility/Examples/5.ColliderEvent/ColliderEvent.unity
-    guid: d8120628a3b4fb84eb121a883bc093a6
+  - enabled: 1
+    path: Assets/Scenes/Evil.unity
+    guid: 7aee3c38ad78e0e499306e9bef82f13b
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f0fdef27104e0a104a4d7d4fb0b7f16c, type: 2}
     com.htc.upm.wave.xrsdk.xrsettings: {fileID: 11400000, guid: 3aa2c8c759941e234a9f9d1181285139, type: 2}
