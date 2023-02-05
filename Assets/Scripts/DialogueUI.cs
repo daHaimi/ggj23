@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using UnityEngine.XR;
 
 public class DialogueUI : MonoBehaviour
@@ -15,12 +14,27 @@ public class DialogueUI : MonoBehaviour
     private InputDevice rControl;
     private InputDevice lControl;
     
+    private AsyncOperation _asyncOperation;
+    private string _sceneName = "LeScene";
+    
+    private IEnumerator LoadSceneAsyncProcess(string sceneName)
+    {
+        _asyncOperation = SceneManager.LoadSceneAsync(sceneName);
+        _asyncOperation.allowSceneActivation = false;
+        while (!_asyncOperation.isDone)
+        {
+            Debug.Log($"[scene]:{sceneName} [load progress]: {this._asyncOperation.progress}");
+            yield return null;
+        }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
         rControl = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
         lControl = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
         _typewriterEffect = GetComponent<TypewriterEffect>();
+        this.StartCoroutine(LoadSceneAsyncProcess(sceneName: _sceneName));
         ShowDialogue(testDialogue);
     }
 
@@ -34,14 +48,10 @@ public class DialogueUI : MonoBehaviour
         foreach (string dialogue in dialogueObject.Dialogue)
         {
             yield return _typewriterEffect.Run(dialogue, textLabel);
-            yield return new WaitUntil(() =>
-            {
-                return Input.GetKeyDown(KeyCode.Space);
-            });
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Input.anyKeyDown);
         }
 
-        SceneManager.LoadScene("LeScene");
-
+        _asyncOperation.allowSceneActivation = true;
     }
     
     

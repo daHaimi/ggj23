@@ -22,4 +22,9 @@ public class MoneyControl : MonoBehaviour
     {
         amount += Mathf.RoundToInt(value);
     }
+
+    public float GetCurrent()
+    {
+        return amount;
+    }
 }

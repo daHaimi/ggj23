@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public Transform trainSound;
     public Transform fadeOut;
 
+    public static Dictionary<string, float> gameState = new();
+
     private Queue<Transform> floors = new();
     private float delta = 0;
     private Vector3 direction = Vector3.back;
@@ -24,7 +27,7 @@ public class GameManager : MonoBehaviour
     private Color fireOrigColor;
     private float fireOrigIntensity;
     private Color fireAlertColor = Color.red;
-    private float fireAlertIntensity = 5f;
+    private float fireAlertIntensity = 8f;
     private AudioSource train;
     private TMP_Text lifeGainText;
     private Animator lifeGainAnim;
@@ -32,7 +35,14 @@ public class GameManager : MonoBehaviour
     private const float DifficultyPickupRaise = 0.05f;
     private const float DifficultyMinuteRaiseInv = 240; // 0.25 per Minute
     private const float TrainBasePitch = .45f;
-    
+
+    private void Awake()
+    {
+        gameState["Distance"] = 0;
+        gameState["Time"] = 0;
+        gameState["Money"] = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,6 +114,7 @@ public class GameManager : MonoBehaviour
     public void AddMoney(float amt)
     {
         moneyCtrl.AddCurrency(amt);
+        gameState["Money"] = moneyCtrl.GetCurrent();
     }
 
     void Lose()
@@ -128,6 +139,8 @@ public class GameManager : MonoBehaviour
         train.pitch = TrainBasePitch * difficulty;
         var size = 3;
         var movement = Time.deltaTime * speed * difficulty;
+        gameState["Distance"] += movement;
+        gameState["Time"] += Time.deltaTime; 
         delta += movement;
         foreach (var floor in floors)
         {
