@@ -34,8 +34,16 @@ public class FloorManager : MonoBehaviour
         }
 
         bc = GetComponent<BoxCollider>();
-        Populate();
+        StartCoroutine(AsyncPopulate());
     }
+    
+
+    IEnumerator AsyncPopulate()
+    {
+        Populate();
+        yield return null;
+    }
+    
     public void Populate()
     {
         foreach (Transform child in rootsContainer.transform)
@@ -69,11 +77,5 @@ public class FloorManager : MonoBehaviour
             if (mc) Destroy(mc);
             inst.transform.Rotate(Vector3.up, Random.Range(0, 360));
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -151,9 +151,15 @@ public class GameManager : MonoBehaviour
         {
             var last = floors.Dequeue();
             last.position -= direction * (size * (floors.Count + 1));
-            last.gameObject.GetComponent<FloorManager>().Populate();
+            StartCoroutine(AsyncPopulate(last));
             floors.Enqueue(last);
             delta = 0;
         }
+    }
+
+    IEnumerator AsyncPopulate(Transform last)
+    {
+        last.gameObject.GetComponent<FloorManager>().Populate();
+        yield return null;
     }
 }
