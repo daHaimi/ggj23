@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Transform fireUI;
     public float energy = 100;
     public float difficulty = 1;
+    public Transform trainSound;
 
     private Queue<Transform> floors = new();
     private float delta = 0;
@@ -20,9 +21,11 @@ public class GameManager : MonoBehaviour
     private float fireOrigIntensity;
     private Color fireAlertColor = Color.red;
     private float fireAlertIntensity = 5f;
+    private AudioSource train;
 
     private const float DifficultyPickupRaise = 0.05f;
     private const float DifficultyMinuteRaiseInv = 240; // 0.25 per Minute
+    private const float TrainBasePitch = .45f;
     
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
         fireLight = fireUI.GetComponentInChildren<Light>();
         fireOrigColor = fireLight.color;
         fireOrigIntensity = fireLight.intensity;
+        train = trainSound.GetComponent<AudioSource>();
         foreach (var child in transform)
         {
             floors.Enqueue(child as Transform);
@@ -89,6 +93,7 @@ public class GameManager : MonoBehaviour
         AddHealth(-Time.deltaTime);
         AddEnergy(-Time.deltaTime);
         difficulty += Time.deltaTime / DifficultyMinuteRaiseInv;
+        train.pitch = TrainBasePitch * difficulty;
         var size = 3;
         var movement = Time.deltaTime * speed * difficulty;
         delta += movement;

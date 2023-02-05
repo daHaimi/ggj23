@@ -40,5 +40,4 @@ public class BeetController : MonoBehaviour
         digging.clip = gardenSounds[Random.Range(0, gardenSounds.Count)];
         digging.Play();
     }
-
 }

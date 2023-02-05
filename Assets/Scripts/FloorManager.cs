@@ -51,7 +51,6 @@ public class FloorManager : MonoBehaviour
         for (int i = 0; i < rootDensity; i++)
         {
             var rand = Random.Range(0, maxWeight);
-            Debug.Log(rand);
             GameObject root;
             do
             {

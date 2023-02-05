@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using HTC.UnityPlugin.Vive;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
@@ -36,8 +37,8 @@ public class DropRoot : MonoBehaviour
     {
         if (floatingText != null)
         {
-            var go = Instantiate(floatingText, transform.position, Quaternion.identity, transform);
-            go.GetComponentInChildren<TextMesh>().text = txt;
+            Instantiate(floatingText, transform.position, Quaternion.identity, transform)
+                .GetComponentInChildren<TMP_Text>().SetText(txt);
         }
     }
     

@@ -105,7 +105,6 @@ GameObject:
   - component: {fileID: 1906950019}
   - component: {fileID: 1906950018}
   - component: {fileID: 1906950017}
-  - component: {fileID: 1906950016}
   m_Layer: 0
   m_Name: Fire_01A
   m_TagString: Untagged
@@ -178,20 +177,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1906950016
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906950015}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1182432073739930
 GameObject:
   m_ObjectHideFlags: 0
