@@ -65,7 +65,7 @@ public class FloorManager : MonoBehaviour
         for (int i = 0; i < obstacleDensity; i++)
         {
             var inst = Instantiate(possObstacles[Random.Range(0, possObstacles.Count)], obstaclesContainer.transform, true);
-            inst.transform.localPosition = new Vector3(Random.Range(-s.x, s.x), 0, Random.Range(-s.z, s.z));
+            inst.transform.localPosition = new Vector3(Random.Range(-s.x, s.x), 0.01f, Random.Range(-s.z, s.z));
             inst.transform.Rotate(Vector3.up, Random.Range(0, 360));
         }
     }
