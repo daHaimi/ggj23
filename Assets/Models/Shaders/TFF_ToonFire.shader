@@ -1,6 +1,6 @@
 // Made with Amplify Shader Editor
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "Toon/TFF_ToonFire"
+Shader "GGJ/ToonFire"
 {
 	Properties
 	{
@@ -31,7 +31,7 @@ Shader "Toon/TFF_ToonFire"
 		#include "UnityShaderVariables.cginc"
 		#include "UnityCG.cginc"
 		#pragma target 3.5
-		#pragma surface surf Standard keepalpha addshadow fullforwardshadows nolightmap  nodirlightmap vertex:vertexDataFunc 
+		#pragma surface surf Standard keepalpha addshadow fullforwardshadows nolightmap  nodirlightmap
 		struct Input
 		{
 			float4 screenPos;
@@ -60,29 +60,6 @@ Shader "Toon/TFF_ToonFire"
 		{
 			float dp3 = max( 0.001f , dot( inVec , inVec ) );
 			return inVec* rsqrt( dp3);
-		}
-
-
-		void vertexDataFunc( inout appdata_full v, out Input o )
-		{
-			UNITY_INITIALIZE_OUTPUT( Input, o );
-			//Calculate new billboard vertex position and normal;
-			float3 upCamVec = normalize ( UNITY_MATRIX_V._m10_m11_m12 );
-			float3 forwardCamVec = -normalize ( UNITY_MATRIX_V._m20_m21_m22 );
-			float3 rightCamVec = normalize( UNITY_MATRIX_V._m00_m01_m02 );
-			float4x4 rotationCamMatrix = float4x4( rightCamVec, 0, upCamVec, 0, forwardCamVec, 0, 0, 0, 0, 1 );
-			v.normal = normalize( mul( float4( v.normal , 0 ), rotationCamMatrix )).xyz;
-			v.tangent.xyz = normalize( mul( float4( v.tangent.xyz , 0 ), rotationCamMatrix )).xyz;
-			//This unfortunately must be made to take non-uniform scaling into account;
-			//Transform to world coords, apply rotation and transform back to local;
-			v.vertex = mul( v.vertex , unity_ObjectToWorld );
-			v.vertex = mul( v.vertex , rotationCamMatrix );
-			v.vertex = mul( v.vertex , unity_WorldToObject );
-			float4 transform420 = mul(unity_ObjectToWorld,float4( 0,0,0,1 ));
-			float4 normalizeResult422 = ASESafeNormalize( ( float4( _WorldSpaceCameraPos , 0.0 ) - transform420 ) );
-			float3 ase_vertex3Pos = v.vertex.xyz;
-			v.vertex.xyz += ( ( _Offset * normalizeResult422 ) + float4( ( 0.1 * ( 0 + ase_vertex3Pos ) ) , 0.0 ) ).xyz;
-			v.vertex.w = 1;
 		}
 
 		void surf( Input i , inout SurfaceOutputStandard o )

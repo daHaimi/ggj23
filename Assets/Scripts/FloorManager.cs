@@ -65,6 +65,8 @@ public class FloorManager : MonoBehaviour
         {
             var inst = Instantiate(possObstacles[Random.Range(0, possObstacles.Count)], obstaclesContainer.transform, true);
             inst.transform.localPosition = new Vector3(Random.Range(-s.x, s.x), 0.01f, Random.Range(-s.z, s.z));
+            var mc = inst.GetComponent<MeshCollider>();
+            if (mc) Destroy(mc);
             inst.transform.Rotate(Vector3.up, Random.Range(0, 360));
         }
     }
