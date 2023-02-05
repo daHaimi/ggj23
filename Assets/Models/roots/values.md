@@ -8,6 +8,7 @@
 | iceroot   | -5                   | -5                     | 50             | 10%          |
 | rootato   | 10                   | 15                     | 30             | 10%          |
 | rotroot   | 1                    | -40                    | 2              | 5%           |
+| caraoot   | 20                   | 50                     | 500            | 1%           |
 
 We start with removing 1 point of health and fuel per second.\
 There is a difficulty factor (starting at 1) it might increase over time or by some other mechanic.
