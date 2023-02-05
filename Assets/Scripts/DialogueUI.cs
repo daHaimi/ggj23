@@ -23,7 +23,6 @@ public class DialogueUI : MonoBehaviour
         _asyncOperation.allowSceneActivation = false;
         while (!_asyncOperation.isDone)
         {
-            Debug.Log($"[scene]:{sceneName} [load progress]: {this._asyncOperation.progress}");
             yield return null;
         }
     }
