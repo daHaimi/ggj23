@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -22,6 +24,8 @@ public class GameManager : MonoBehaviour
     private Color fireAlertColor = Color.red;
     private float fireAlertIntensity = 5f;
     private AudioSource train;
+    private TMP_Text lifeGainText;
+    private Animator lifeGainAnim;
 
     private const float DifficultyPickupRaise = 0.05f;
     private const float DifficultyMinuteRaiseInv = 240; // 0.25 per Minute
@@ -36,6 +40,9 @@ public class GameManager : MonoBehaviour
         fireOrigColor = fireLight.color;
         fireOrigIntensity = fireLight.intensity;
         train = trainSound.GetComponent<AudioSource>();
+        var floatingText = playerUI.transform.Find("HealthGain");
+        lifeGainText = floatingText.GetComponentInChildren<TMP_Text>();
+        lifeGainAnim = floatingText.GetComponent<Animator>();
         foreach (var child in transform)
         {
             floors.Enqueue(child as Transform);
@@ -46,6 +53,7 @@ public class GameManager : MonoBehaviour
     {
         if (amt > 0)
         {
+            ShowFloatingText($"{amt}");
             difficulty += DifficultyPickupRaise;
         }
         foodBar.currentHealthPercent = Mathf.Min(100, foodBar.currentHealthPercent + amt);
@@ -53,6 +61,20 @@ public class GameManager : MonoBehaviour
         {
             Lose();
         }
+    }
+
+    void ShowFloatingText(string txt)
+    {
+        lifeGainText.text = txt;
+        lifeGainAnim.Play("FloatText");
+        StartCoroutine(ResetText());
+    }
+
+    IEnumerator ResetText()
+    {
+        yield return new WaitForSeconds(.5f);
+        lifeGainText.text = "";
+        lifeGainAnim.Rebind();
     }
 
     public void AddEnergy(float amt)

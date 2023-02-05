@@ -16,6 +16,8 @@ public class DropRoot : MonoBehaviour
     private InputDevice rControl;
     private InputDevice lControl;
     private GameManager gm;
+    private TMP_Text text;
+    private Animator anim;
     
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,8 @@ public class DropRoot : MonoBehaviour
         rControl = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
         lControl = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
         gm = gameManager.GetComponent<GameManager>();
+        text = floatingText.GetComponentInChildren<TMP_Text>();
+        anim = floatingText.GetComponent<Animator>();
     }
     
     void HapticPulseUnity(bool right)
@@ -35,11 +39,16 @@ public class DropRoot : MonoBehaviour
 
     void ShowFloatingText(string txt)
     {
-        if (floatingText != null)
-        {
-            Instantiate(floatingText, transform.position, Quaternion.identity, transform)
-                .GetComponentInChildren<TMP_Text>().SetText(txt);
-        }
+        text.text = txt;
+        anim.Play("FloatText");
+        StartCoroutine(ResetText());
+    }
+
+    IEnumerator ResetText()
+    {
+        yield return new WaitForSeconds(.5f);
+        text.text = "";
+        anim.Rebind();
     }
     
     private void OnCollisionEnter(Collision collision)
