@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using HTC.UnityPlugin.Vive;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class DropRoot : MonoBehaviour
@@ -9,6 +10,7 @@ public class DropRoot : MonoBehaviour
     public bool isSelling;
     public AudioSource actionSound;
     public GameObject gameManager;
+    public Transform floatingText;
 
     private InputDevice rControl;
     private InputDevice lControl;
@@ -29,6 +31,15 @@ public class DropRoot : MonoBehaviour
         else
             lControl.SendHapticImpulse(0, 1f, 0.1f);
     }
+
+    void ShowFloatingText(string txt)
+    {
+        if (floatingText != null)
+        {
+            var go = Instantiate(floatingText, transform.position, Quaternion.identity, transform);
+            go.GetComponentInChildren<TextMesh>().text = txt;
+        }
+    }
     
     private void OnCollisionEnter(Collision collision)
     {
@@ -44,10 +55,12 @@ public class DropRoot : MonoBehaviour
         actionSound.Play();
         if (isSelling)
         {
+            ShowFloatingText($"√ {bc.price}");
             gm.AddMoney(bc.price);
         }
         else
         {
+            ShowFloatingText($"+ {bc.fuelValue}");
             gm.AddEnergy(bc.fuelValue);
         }
 

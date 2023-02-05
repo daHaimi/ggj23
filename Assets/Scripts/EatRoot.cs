@@ -9,15 +9,18 @@ public class EatRoot : MonoBehaviour
     public GameManager gm;
     public AudioSource abgeschmatzt;
     public List<AudioClip> eatingSounds;
+    public Transform sabbern;
 
     private InputDevice rControl;
     private InputDevice lControl;
+    private ParticleSystem psys;
     
     // Start is called before the first frame update
     void Start()
     {
         rControl = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
         lControl = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        psys = sabbern.GetComponent<ParticleSystem>();
     }
     void HapticPulseUnity(bool right)
     {
@@ -34,6 +37,7 @@ public class EatRoot : MonoBehaviour
         gm.AddHealth(bc.healthValue);
         abgeschmatzt.clip = eatingSounds[Random.Range(0, eatingSounds.Count)];
         abgeschmatzt.Play();
+        psys.Play();
         HapticPulseUnity(bc.cec.viveRole.IsRole(HandRole.RightHand));
         collision.gameObject.GetComponent<BasicGrabbable>().ForceRelease();
         Destroy(collision.gameObject);

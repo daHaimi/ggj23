@@ -151,6 +151,8 @@ MonoBehaviour:
   - {fileID: 8556830645515804781, guid: 86fd26dc036e1e685a51c79b12ce3cb8, type: 3}
   - {fileID: 4539643400213216867, guid: 74578da72b980f53c997bb36230f2d65, type: 3}
   - {fileID: 1432726965422769763, guid: c2d7ad123bff503a591f5a41d8b46e40, type: 3}
+  - {fileID: 1432726965422769763, guid: d5316e1666892af4c8bdfa87c83e69d7, type: 3}
+  - {fileID: 1432726965422769763, guid: 4e493a3bd573d404b8107fa935363a49, type: 3}
   possObstacles:
   - {fileID: 2935361225058495807, guid: a16e529afb268144a8534d7dca76f2c0, type: 3}
   - {fileID: 8951721864408248206, guid: 2a007355eea5d404dafcc683ea0dab5a, type: 3}

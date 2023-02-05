@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     {
         energy += amt;
         var scale = fireUI.localScale;
-        scale.y = energy / 50;
+        scale.y = 50 / energy;
         fireUI.localScale = scale;
         switch (energy)
         {
